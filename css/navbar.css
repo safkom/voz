@@ -1,0 +1,119 @@
+/* Navbar styles */
+.navbar {
+    background-color: #343a40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}   
+
+.content-below-navbar {
+    margin-top: 100px;
+}
+
+/* Style the left section of the navbar */
+.navbar-left {
+    flex: 1;
+    margin-left:100px;
+}
+
+/* Style the center section of the navbar */
+.navbar-center {
+    flex: 1;
+    text-align: center;
+}
+
+/* Style the right section of the navbar */
+.navbar-right {
+    flex: 1;
+    text-align: right;
+    margin-right: 100px;
+}
+.navbar-right button {
+    padding: 5px 10px; /* Adjust button padding for smaller size */
+    margin-left: 5px; /* Adjust button margin for spacing */
+}
+
+/* Style the buttons in the right section */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .navbar-right {
+        margin: 10px 0; /* Adjusted margin for smaller screens */
+        text-align: center; /* Center align buttons on smaller screens */
+    }
+
+    .navbar-right button {
+        margin: 5px; /* Adjust button margin for spacing */
+    }
+    .content-below-navbar {
+        margin-top: 200px;
+    }
+    .navbar-left {
+        margin-left: 0;
+    }
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+    background-color: #343a40; /* Choose your preferred background color */
+    color: #ffffff; /* Choose your preferred text color */
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: 30%; /* Adjust as needed */
+}
+
+.footer-section h3 {
+    color: #ffc107; /* Choose your preferred heading color */
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+}
+
+/* Add any additional styles for your links, if necessary */
+.footer-section a {
+    color: #17a2b8; /* Choose your preferred link color */
+}
+
+/* Optional: Center the text in the footer */
+.footer-section.text-center {
+    text-align: center;
+}
+.footer-top-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffc107; /* Yellow color, you can adjust as needed */
+    margin-bottom: 20px;
+}
+#vozText {
+    color: white;
+    transition: color 0.5s ease;
+    cursor: pointer;
+}
