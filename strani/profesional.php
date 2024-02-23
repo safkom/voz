@@ -44,51 +44,6 @@
         <section class="text-section">
             <img src="img/18.jpg" alt="voz" class="img-fluid">
         </section>
-
-        <section class="text-section">
-            <h2 class="konfigurator">Konfigurator</h2>
-            <div class="cenik">
-                <div class="option-section">
-                    <h2>Velikost</h2>
-                    <div class="option-buttons" id="size-options-2">
-                        <button class="option-button" data-group="size-2" data-price="1500" onclick="selectOption('size-2', this)">40x30cm (1500€)</button>
-                        <button class="option-button" data-group="size-2" data-price="2000" onclick="selectOption('size-2', this)">60x40cm (2000€)</button>
-                        <button class="option-button" data-group="size-2" data-price="2500" onclick="selectOption('size-2', this)">80x60cm (2500€)</button>
-                    </div>
-                </div>
-
-                <div class="option-section">
-                    <h2>Rezkar</h2>
-                    <div class="option-buttons" id="drilling-options-2">
-                        <button class="option-button" data-group="drilling-2" data-price="1000" onclick="selectOption('drilling-2', this)">Motor A (1000€)</button>
-                        <button class="option-button" data-group="drilling-2" data-price="1200" onclick="selectOption('drilling-2', this)">Motor B (1200€)</button>
-                        <button class="option-button" data-group="drilling-2" data-price="1500" onclick="selectOption('drilling-2', this)">Motor C (1500€)</button>
-                    </div>
-                </div>
-
-                <div class="option-section">
-                    <h2>Laser</h2>
-                    <div class="option-buttons" id="laser-options-2">
-                        <button class="option-button" data-group="laser-2" data-price="0" onclick="selectOption('laser-2', this)">Brez (0€)</button>
-                        <button class="option-button" data-group="laser-2" data-price="2000" onclick="selectOption('laser-2', this)">Laser 1 (2000€)</button>
-                        <button class="option-button" data-group="laser-2" data-price="2500" onclick="selectOption('laser-2', this)">Laser 2 (2500€)</button>
-                        <button class="option-button" data-group="laser-2" data-price="3000" onclick="selectOption('laser-2', this)">Laser 3 (3000€)</button>
-                    </div>
-                </div>
-
-                <div class="option-section">
-                    <h2>Dodatki</h2>
-                    <div class="option-buttons" id="addon-options-2">
-                        <button class="option-button" data-price="500" onclick="toggleAddon('Addon 1')">Addon 1 (500€)</button>
-                        <button class="option-button" data-price="750" onclick="toggleAddon('Addon 2')">Addon 2 (750€)</button>
-                        <button class="option-button" data-price="1000" onclick="toggleAddon('Addon 3')">Addon 3 (1000€)</button>
-                        <button class="option-button" data-price="1500" onclick="toggleAddon('Addon 4')">Addon 4 (1500€)</button>
-                    </div>
-                </div>
-
-                <div class="total-price" id="total-price-2">Skupna cena: 0€</div>
-            </div>
-        </section>
         <br>
     </div>
 </div>

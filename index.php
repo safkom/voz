@@ -45,9 +45,9 @@
 <?php include_once 'strani/standard.php'; ?>
 
 <?php include_once 'strani/visoki.php'; ?>
-
+<div class ="price">
 <?php include_once 'cenik.php'; ?>
-
+</div>
 <?php include_once 'footer.php'; ?>
 <script src="js/prikaz.js"></script>
 <script src="js/voz.js"></script>

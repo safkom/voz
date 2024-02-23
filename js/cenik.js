@@ -18,12 +18,12 @@ function calculateTotalPrice() {
   selectedOptions.forEach(option => {
     totalPrice += parseInt(option.getAttribute('data-price'));
   });
-  document.getElementById('total-price').innerText = `Total Price: ${totalPrice}â‚¬`;
+  document.getElementById('total-price').innerText = `Skupna cena: ${totalPrice}€`;
 }
 
   function resetTotalPrice() {
     const totalPriceElement = document.getElementById('total-price');
-    totalPriceElement.innerText = `Skupna cena: 0€`; // Reset the total price to 0
+    totalPriceElement.innerText = `Skupna cena: 0€`;
 }
 
 function deselectButtons() {
