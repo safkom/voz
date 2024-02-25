@@ -183,3 +183,34 @@ footer {
     margin: 10px;
     text-align: center;
 }
+
+.submit-button,
+.submit-button-form {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover,
+  .submit-button-form:hover{
+    background-color: #45a049; /* Darker Green */
+  }
+
+  
+
+  /* css for opozorilo-izbira, a warning */
+    .opozorilo-izbira{
+        font-size: 1.5rem;
+        background-color: #ffc107;
+        color: black;
+        text-align: center;
+    }
+  

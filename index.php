@@ -13,7 +13,7 @@
     <title>Voz</title>
 </head>
 <body>
-
+<p id = "konfigurator" style = "display: none;"></p>
 <?php include_once 'content.php'; ?>
 <div class="image-container-zacetek hidden">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

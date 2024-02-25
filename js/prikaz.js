@@ -1,3 +1,4 @@
+var konfigurator;
 document.addEventListener("DOMContentLoaded", function() {
     // Hide all divs except the initial one and price div
     document.querySelectorAll('.jermenski, .profesional, .standard, .visoki, .image-container-jermenski, .image-container-profesional, .image-container-standard, .image-container-visoki, .price').forEach(function(el) {
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("standard").addEventListener("click", function() {
         // Scroll to the top of the page
         window.scrollTo(0, 0);
+        document.getElementById('konfigurator').textContent = "Standard";
 
         // Show standard and hide other divs
         document.querySelectorAll('.jermenski, .profesional, .visoki, .zacetek, .image-container-jermenski, .image-container-profesional, .image-container-zacetek, .image-container-visoki').forEach(function(el) {
@@ -66,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("profesional").addEventListener("click", function() {
         // Scroll to the top of the page
         window.scrollTo(0, 0);
-
+        document.getElementById('konfigurator').textContent = "Profesional";
         // Show profesional and hide other divs
         document.querySelectorAll('.jermenski, .standard, .visoki, .zacetek, .image-container-jermenski, .image-container-zacetek, .image-container-standard, .image-container-visoki').forEach(function(el) {
             el.style.display = 'none';
@@ -87,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("jermenski").addEventListener("click", function() {
         // Scroll to the top of the page
         window.scrollTo(0, 0);
+        document.getElementById('konfigurator').textContent = "Jermenski";
 
         // Show jermenski and hide other divs
         document.querySelectorAll('.profesional, .standard, .visoki, .zacetek, .image-container-zacetek, .image-container-profesional, .image-container-standard, .image-container-visoki').forEach(function(el) {
@@ -108,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("visoki").addEventListener("click", function() {
         // Scroll to the top of the page
         window.scrollTo(0, 0);
+        document.getElementById('konfigurator').textContent = "Visoki";
 
         // Show visoki and hide other divs
         document.querySelectorAll('.jermenski, .standard, .profesional, .zacetek, .image-container-jermenski, .image-container-profesional, .image-container-standard, .image-container-zacetek').forEach(function(el) {
@@ -126,111 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
         resetTotalPrice();
     });
 });
-
-
-function showPrice(dimensions) {
-    var priceDiv = document.getElementById('price' + dimensions);
-    if (priceDiv.style.display === 'none') {
-      priceDiv.style.display = 'block';
-    } else {
-      priceDiv.style.display = 'none';
-    }
-  }
-
-
-  function fetchConfigurations(machine) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'podatki.php?machine=' + machine, true);
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            var Data = JSON.parse(xhr.responseText);
-            generateConfiguration(Data);
-        } else {
-            console.error('Failed to fetch configurations data');
-        }
-    };
-    xhr.onerror = function() {
-        console.error('Failed to fetch configurations data');
-    };
-    xhr.send();
-}
-
-function generateConfiguration(Data) {
-
-    // Clear the content of the divs
-    document.getElementById('size-options').innerHTML = '';
-    document.getElementById('drilling-options').innerHTML = '';
-    document.getElementById('laser-options').innerHTML = '';
-    document.getElementById('addon-options').innerHTML = '';
-
-    // Check if Data is empty
-    if (Object.values(Data).every(arr => arr.length === 0)) {
-        // Write out message if all arrays are empty
-        // hide every .option-section
-        document.querySelectorAll('.option-section').forEach(function(el) {
-            el.style.display = 'none';
-        });
-        document.getElementById('total-price').innerHTML = 'Ni še podatkov za to konfiguracijo.';
-        return;
-    } else {
-        // Show every .option-section
-        document.querySelectorAll('.option-section').forEach(function(el) {
-            el.style.display = 'block';
-        });
-    }
-    
-
-    // Generate buttons for sizes
-    Data.velikosti.forEach(function(size) {
-        var optionButton = createOptionButton('size', size.machine, size.velikost, size.cena);
-        document.getElementById('size-options').appendChild(optionButton);
-    });
-
-    // Generate buttons for rezkarji (drilling)
-    Data.rezkarji.forEach(function(rezkar) {
-        var optionButton = createOptionButton('drilling', rezkar.machine, rezkar.ime, rezkar.cena);
-        document.getElementById('drilling-options').appendChild(optionButton);
-    });
-
-    // Generate buttons for laserji (laser)
-    Data.laserji.forEach(function(laser) {
-        var optionButton = createOptionButton('laser', laser.machine, laser.ime, laser.cena);
-        document.getElementById('laser-options').appendChild(optionButton);
-    });
-
-    // Generate buttons for dodatki (addons)
-    Data.dodatki.forEach(function(dodatki) {
-        console.log(dodatki);
-        var optionButton = createOptionButtonDodatki('addon', dodatki.machine, dodatki.ime, dodatki.cena);
-        document.getElementById('addon-options').appendChild(optionButton);
-    });
-}
-
-function createOptionButton(group, machine, label, price) {
-    var optionButton = document.createElement('button');
-    optionButton.setAttribute('class', 'option-button');
-    optionButton.setAttribute('data-group', group);
-    optionButton.setAttribute('data-price', price);
-    optionButton.textContent = label + ' (' + price + '€)';
-    optionButton.innerHTML =  label + ' (' + price + '€)';
-    optionButton.onclick = function() {
-        selectOption(group, this);
-    };
-    return optionButton;
-}
-
-function createOptionButtonDodatki(group, machine, label, price) {
-    var optionButton = document.createElement('button');
-    optionButton.setAttribute('class', 'option-button');
-    optionButton.setAttribute('data-group', group);
-    optionButton.setAttribute('data-price', price);
-    optionButton.textContent = label + ' (' + price + '€)';
-    optionButton.innerHTML =  label + ' (' + price + '€)';
-    optionButton.onclick = function() {
-        toggleAddon(group, this);
-    };
-    return optionButton;
-}
 
 
 
