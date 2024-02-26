@@ -105,13 +105,6 @@
                 $_SESSION["email"] = $row['mail'];
                 $_SESSION["ime"] = $row['ime'];
                 $_SESSION["priimek"] = $row['priimek'];
-                $_SESSION["telefon"] = $row['telefon'];
-                $_SESSION["naslov"] = $row['naslov'];
-                $_SESSION["postna_stevilka"] = $row['postna_stevilka'];
-                $_SESSION["kraj"] = $row['kraj'];
-                $_SESSION["drzava"] = $row['drzava'];
-                $_SESSION["datum_registracije"] = $row['datum_registracije'];
-                $_SESSION["vloga"] = $row['vloga'];
                 // Redirect to dashboard or home page upon successful login
                 header("Location: vozek.php");
                 exit;

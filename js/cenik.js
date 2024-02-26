@@ -45,7 +45,7 @@ function showPrice(dimensions) {
 
 function fetchConfigurations(machine) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'podatki.php?machine=' + machine, true);
+  xhr.open('GET', 'info/podatki.php?machine=' + machine, true);
   xhr.onload = function() {
       if (xhr.status >= 200 && xhr.status < 300) {
           var Data = JSON.parse(xhr.responseText);
@@ -255,11 +255,10 @@ document.addEventListener("DOMContentLoaded", function() {
       formData.append('opombe', messageInput);
       formData.append('telefon', phoneInput);
       formData.append('konfigurator', document.getElementById('konfigurator').textContent);
-      console.log(document.getElementById('konfigurator').textContent);
 
       // AJAX request
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'povprasevanje.php', true);
+      xhr.open('POST', 'info/povprasevanje.php', true);
       xhr.onload = function() {
           if (xhr.status === 200) {
               // show success div
@@ -267,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
               successDiv.style.display = 'block';
               successDiv.classList.add('fade-in');
               // hide form
-              var form = document.querySelector('.povprasevanje-form');
+              var form = document.querySelector('.modern-form');
               form.style.display = 'none';
               // hide success div after 4 seconds
               // You can show a success message or redirect the user to another page here

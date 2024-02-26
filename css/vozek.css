@@ -1,4 +1,3 @@
-/* Your CSS styles here */
 .popup-container {
     display: none;
     position: fixed;
@@ -8,7 +7,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
     z-index: 9999; /* Ensure the popup is on top of other elements */
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 .popup-box {
@@ -20,26 +18,38 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Slight shadow effect */
-    animation: slideIn 0.5s ease-in-out;
+    animation-duration: fadeIn 0.5s; /* Set animation duration */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+.fade-in {
+    opacity: 0; /* Start with opacity 0 */
+    animation: fadeIn 0.5s ease-in-out forwards; /* Apply fadeIn animation */
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s ease forwards; /* Apply fadeOut animation */
+  }
 
-@keyframes slideIn {
+
+  @keyframes fadeIn {
     from {
-        transform: translate(-50%, -200%);
+      opacity: 0;
+      transform: translateY(-20px);
     }
     to {
-        transform: translate(-50%, -50%);
+      opacity: 1;
+      transform: translateY(0);
     }
-}
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 
 body {
     font-family: Arial, sans-serif;
@@ -50,29 +60,19 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #fff; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    animation: fadeIn 0.5s ease; 
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+
 
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    animation: fadeIn 0.5s ease;
 }
 
 table {
@@ -81,7 +81,8 @@ table {
     margin-bottom: 20px;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
@@ -104,7 +105,88 @@ tr:nth-child(even) {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.delete-order-btn {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
 .show-customer-btn:hover {
-    background-color: #0056b3;
+    background-color: dark;
+}
+
+.delete-order-btn:hover {
+    background-color: darkred;
+}
+
+.modern-form {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .modern-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .modern-form input[type="text"],
+  .modern-form input[type="email"],
+  .modern-form input[type="tel"],
+  .modern-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .modern-form textarea {
+    resize: vertical;
+  }
+  
+  .modern-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modern-form input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .success {
+    background-color: #dff0d8;
+    border: 1px solid #c3e6cb;
+    border-radius: .25rem;
+    padding: 20px;
+    display: none;
+  }
+
+/* Flexbox for aligning content */
+.success-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Adjust margin for the image */
+.success img {
+    margin-right: 10px; /* Adjust as needed */
+    width: 50px;
+}
+
+.profile-submit-button{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }

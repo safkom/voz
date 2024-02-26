@@ -27,4 +27,27 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+
+    var deleteOrderBtns = document.querySelectorAll('.delete-order-btn');
+    deleteOrderBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var orderId = this.getAttribute('data-order-id'); // Add data-order-id attribute to the button if needed
+            // Show confirmation dialog
+            var confirmation = confirm('Ali ste prepričani, da želite izbrisati naročilo?');
+            if (confirmation) {
+                var formData = new FormData();
+                formData.append('order_id', orderId);
+                // Send AJAX request to delete the order
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'info/izbrisinarocilo.php', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // Reload the page
+                        window.location.reload();
+                    }
+                };
+                xhr.send(formData);
+            }
+        });
+    });
 });

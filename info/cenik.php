@@ -34,6 +34,8 @@
             </div>
             <div class = "povprasevanje-form" id = "povprasevanje-form" style = "display: none;">
             <div class = "modern-form">
+            <h3 class = "form-header">Povpraševanje</h3>
+            <div class = "form-description">Za več informacij o izbranem stroju izpolnite spodnji obrazec in odgovorili vam bomo v najkrajšem možnem času.</p>
             <label for="ime">Ime in priimek:</label>
                 <input type="text" id="ime" name="ime" required><br>
 
@@ -52,7 +54,7 @@
                 </div>
             </div>
             </div>
-            <div class="success" style="display: none; background-color: #dff0d8; border: 1px solid #c3e6cb; border-radius: .25rem; padding: 20px; margin-top: 20px;">
+            <div class="success">
                 <img src="img/checkmark.png" alt="Success" class="success-image" style="width: 200px; margin-bottom: 20px;">
                 <h2 class="success-message" style="font-family: Arial, sans-serif; font-size: 24px; color: #155724; margin: 0;">Povpraševanje uspešno poslano!</h2>
             </div>

@@ -14,7 +14,7 @@
 </head>
 <body>
 <p id = "konfigurator" style = "display: none;"></p>
-<?php include_once 'content.php'; ?>
+<?php include_once 'info/content.php'; ?>
 <div class="image-container-zacetek hidden">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="fade-overlay"></div>
@@ -46,9 +46,9 @@
 
 <?php include_once 'strani/visoki.php'; ?>
 <div class ="price">
-<?php include_once 'cenik.php'; ?>
+<?php include_once 'info/cenik.php'; ?>
 </div>
-<?php include_once 'footer.php'; ?>
+<?php include_once 'info/footer.php'; ?>
 <script src="js/prikaz.js"></script>
 <script src="js/voz.js"></script>
 <script src="js/cenik.js"></script>
