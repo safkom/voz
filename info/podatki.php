@@ -1,18 +1,5 @@
 <?php
-
-// Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "voz";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once 'baza.php';
 
 // Get machine name from URL parameters
 $machine = $_GET['machine']; // Assuming machine name is passed as a GET parameter

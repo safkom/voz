@@ -3,8 +3,8 @@
 require_once 'baza.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $order_id = $_POST['order_id'];
-    $sql = "DELETE FROM narocila WHERE id = " . $order_id;
+    $user_id = $_POST['user_id'];
+    $sql = "DELETE FROM uporabniki WHERE id = " . $user_id;
     if ($conn->query($sql) === TRUE) {
         echo json_encode(array('success' => true, 'message' => 'Naročilo uspešno izbrisano!'));
     } else {

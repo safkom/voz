@@ -1,17 +1,5 @@
 <?php
-// Establish connection to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "voz"; // Change this to your database name
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    http_response_code(500); // Internal Server Error
-    die(json_encode(array('success' => false, 'message' => 'Connection failed: ' . $conn->connect_error)));
-}
+require_once 'baza.php';
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

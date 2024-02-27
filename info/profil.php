@@ -1,13 +1,4 @@
 <?php 
-    // Database connection parameters
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "voz";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    
     $sql = "SELECT * FROM uporabniki WHERE id = " . $_SESSION['id'];
     $result = $conn->query($sql);
     $user = $result->fetch_assoc();
@@ -25,6 +16,7 @@
         <img src="img/checkmark.png" alt="Success" class="success-image">
         <h2 class="success-message">Informacije uspešno posodobljene!</h2>
     </div>
+    <p id = "gesloText">Če ste vnesli pravo geslo, bo to spremenjeno.</p>
 </div>
     <h2>Profil</h2>
     <p style = "text-align:center;">Uredi ali preglej svoje podatke</p>

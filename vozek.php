@@ -17,27 +17,22 @@
         exit;
     }
 
-    // Establish connection to the database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "voz"; // Change this to your database name
-
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Check connection
-    if ($conn->connect_error) {
-        http_response_code(500); // Internal Server Error
-        die(json_encode(array('success' => false, 'message' => 'Connection failed: ' . $conn->connect_error)));
-    }
+    require_once 'info/baza.php';
     ?>
     <nav class="navbar">
     <div class="navbar-left">
     <a href="javascript:window.location.href=window.location.href" onclick="return false;" style = "text-decoration: none;">
-        <h3 id="vozText" onmouseover="changeColor()" onmouseout="resetColor()" onclick="location.href = 'index.php';">Voz</h3></a>
+        <h3 id="vozText" onmouseover="changeColor()" onmouseout="resetColor()" >Voz</h3></a>
     </div>
         <div class="navbar-center">
             <button class="btn btn-outline-light" id = "narocilaButton">Naročila</button>
+            <button class="btn btn-outline-light" id = "izdelkiButton">Izdelki</button>
+            <?php
+            // if the user is an admin, show the uporabniki button
+            if($_SESSION["admin"] == 1){
+                echo "<button class='btn btn-outline-light' id = 'uporabnikiButton'>Uporabniki</button>";
+            }  
+            ?>
         </div>
 
         <div class="navbar-right">
@@ -51,17 +46,31 @@
 
 <?php echo "<h2>Živjo, " . htmlspecialchars($_SESSION["ime"]) . "!</h2>";?>
 
+<?php
+if(isset($_SESSION["obvestilo"])){
+    echo "<div class = 'obvestilo'>";
+    echo "<p>" . $_SESSION["obvestilo"] . "</p>";
+    echo "</div>";
+    unset($_SESSION["obvestilo"]);
+}
+?>
+
 <?php include_once 'info/narocila.php'; ?>
 
+<?php include_once 'info/izdelki.php'; ?>
+
 <?php include_once 'info/profil.php'; ?>
+
+<?php include_once 'info/uporabniki.php'; ?>
 
 <div class="popup-container" id="popupContainer">
     <div class="popup-box">
     </div>
 </div>
-
+<?php $conn->close(); ?>
 </body>
 <script src="js/stranke.js"></script>
 <script src="js/vozek.js"></script>
 <script src="js/voz.js"></script>
+<script src="js/izdelki.js"></script>
 </html>

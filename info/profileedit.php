@@ -1,13 +1,5 @@
 <?php
-// Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "voz";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
+require_once 'baza.php';
 // change profile info
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ime = $_POST['ime'];
@@ -18,21 +10,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userId = $_POST['userId'];
 
     //dont change password if empty
-    if (empty($geslo) && empty($geslo2)) {
+    if (empty($geslo) || empty($geslo2)) {
         $sql = "UPDATE uporabniki SET ime = '$ime', priimek = '$priimek', mail = '$email' WHERE id = " . $userId;
         if ($conn->query($sql) === TRUE) {
             echo json_encode(array('success' => true, 'message' => 'Podatki uspešno posodobljeni!'));
+            // return the variables also
+            echo json_encode(array('ime' => $ime, 'priimek' => $priimek, 'email' => $email));
         } else {
             echo json_encode(array('success' => false, 'message' => 'Napaka pri posodabljanju podatkov: ' . $conn->error));
         }
     } 
     else{
-        if ($geslo != $geslo2) {
-            echo json_encode(array('success' => false, 'message' => 'Gesli se ne ujemata!'));
-        } else {
-            // use pasword_hash to hash the password
-            $geslo = password_hash($geslo, PASSWORD_DEFAULT);
-            $sql = "UPDATE uporabniki SET ime = '$ime', priimek = '$priimek', mail = '$email', geslo = '$geslo' WHERE id = " . $userId;
+        $sql = "SELECT geslo FROM uporabniki WHERE id = " . $userId;
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+        $hashed_password = $user['geslo']; // Fetch hashed password from database
+
+        if (!password_verify($geslo, $hashed_password)) { // Verify entered password with hashed password
+            echo json_encode(array('success' => false, 'message' => 'Napačno geslo!'));
+        } else{
+            // use pasword_hash to hash the new password
+            $new_hashed_password = password_hash($geslo2, PASSWORD_DEFAULT);
+            $sql = "UPDATE uporabniki SET ime = '$ime', priimek = '$priimek', mail = '$email', geslo = '$new_hashed_password' WHERE id = " . $userId;
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(array('success' => true, 'message' => 'Podatki uspešno posodobljeni!'));
             } else {
@@ -40,6 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }   
-    }
+}
 $conn->close();
 ?>

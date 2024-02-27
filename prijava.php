@@ -74,20 +74,7 @@
 <div class="container">
     <h2>Login</h2>
     <?php
-
-    // Establish connection to the database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "voz"; // Change this to your database name
-
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Check connection
-    if ($conn->connect_error) {
-        http_response_code(500); // Internal Server Error
-        die(json_encode(array('success' => false, 'message' => 'Connection failed: ' . $conn->connect_error)));
-    }
+    require_once "info/baza.php";
     // Process login
     if ($_SERVER["REQUEST_METHOD"] == "POST") {// Validate login credentials (for demonstration purpose, you should use secure authentication methods)
         if(isset($_POST['email']) && isset($_POST['password'])){
@@ -105,6 +92,7 @@
                 $_SESSION["email"] = $row['mail'];
                 $_SESSION["ime"] = $row['ime'];
                 $_SESSION["priimek"] = $row['priimek'];
+                $_SESSION["admin"] = $row['admin'];
                 // Redirect to dashboard or home page upon successful login
                 header("Location: vozek.php");
                 exit;

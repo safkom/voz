@@ -19,5 +19,6 @@
     <div class="footer-bottom">
         <p style = "text-align: center;">Vse pravice pridržane &copy; <?php echo date("Y"); ?> Voz</p><br>
         <p style = "text-align: center; font-size: 0.8rem;">Izdelava spletne strani: <a href="https://www.github.com/safkom">Miha Šafranko</a></p>
+        <p style = "text-align: center; font-size: 0.8rem;">Prijava za administratorje: <a href = "prijava.php">Vozek</a></p>
     </div>
 </footer>

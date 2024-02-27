@@ -96,11 +96,10 @@
             }
         }
     } else {
-        echo "<p>Trenutno ni še nobenih naročil.</p>";
+        echo "<p style = 'text-align:center;'>Trenutno ni še nobenih naročil.</p>";
     }
 
     // Close database connection
-    $conn->close();
     ?>
     </div>
 </div>

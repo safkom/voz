@@ -15,6 +15,7 @@
 <body>
 <p id = "konfigurator" style = "display: none;"></p>
 <?php include_once 'info/content.php'; ?>
+<?php include_once 'info/baza.php'; ?>
 <div class="image-container-zacetek hidden">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="fade-overlay"></div>
