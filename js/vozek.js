@@ -17,13 +17,22 @@ document.getElementById("narocilaButton").addEventListener("click", function() {
     var uporabnikiElement = document.querySelector('#uporabnikiContainer');
     var izdelkiElement = document.querySelector('#izdelkiContainer');
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
+    var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
+    var addPoljaContainer = document.querySelector('#addPoljaContainer');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
         hideElement(dodajIzdelekContainer);
         if(document.querySelector('#editIzdelekContainer') !== null){
         hideElement(editIzdelekContainer);
-        }
+    }
+    if(document.querySelector('#deletePoljaContainer') !== null){
+        hideElement(deletePoljaContainer);
+    }
+    if(document.querySelector('#addPoljaContainer') !== null){
+        hideElement(addPoljaContainer);
+    }
+
     hideElement(izdelkiElement);
     hideElement(uporabnikiElement);
     hideElement(profilElement);
@@ -64,12 +73,20 @@ document.getElementById("izdelkiButton").addEventListener("click", function() {
     var uporabnikiElement = document.querySelector('#uporabnikiContainer');
     var izdelkiElement = document.querySelector('#izdelkiContainer');
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
+    var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
+    var addPoljaContainer = document.querySelector('#addPoljaContainer');
     if(document.querySelector('#editIzdelekContainer') !== null){
     var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
     }
     hideElement(dodajIzdelekContainer);
     if(document.querySelector('#editIzdelekContainer') !== null){
     hideElement(editIzdelekContainer);
+    }
+    if(document.querySelector('#deletePoljaContainer') !== null){
+        hideElement(deletePoljaContainer);
+    }
+    if(document.querySelector('#addPoljaContainer') !== null){
+        hideElement(addPoljaContainer);
     }
     hideElement(narocilaElement);
     hideElement(uporabnikiElement);
@@ -90,12 +107,20 @@ document.getElementById("profilButton").addEventListener("click", function() {
     var uporabnikiElement = document.querySelector('#uporabnikiContainer');
     var izdelkiElement = document.querySelector('#izdelkiContainer');
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
+    var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
+    var addPoljaContainer = document.querySelector('#addPoljaContainer');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
         hideElement(dodajIzdelekContainer);
         if(document.querySelector('#editIzdelekContainer') !== null){
         hideElement(editIzdelekContainer);
+        }
+        if(document.querySelector('#deletePoljaContainer') !== null){
+            hideElement(deletePoljaContainer);
+        }
+        if(document.querySelector('#addPoljaContainer') !== null){
+            hideElement(addPoljaContainer);
         }
     hideElement(izdelkiElement);
     hideElement(uporabnikiElement);
@@ -113,12 +138,20 @@ document.getElementById("uporabnikiButton").addEventListener("click", function()
     var profilElement = document.querySelector('#profilContainer');
     var izdelkiElement = document.querySelector('#izdelkiContainer');
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
+    var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
+    var addPoljaContainer = document.querySelector('#addPoljaContainer');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
         hideElement(dodajIzdelekContainer);
         if(document.querySelector('#editIzdelekContainer') !== null){
         hideElement(editIzdelekContainer);
+        }
+        if(document.querySelector('#deletePoljaContainer') !== null){
+            hideElement(deletePoljaContainer);
+        }
+        if(document.querySelector('#addPoljaContainer') !== null){
+            hideElement(addPoljaContainer);
         }
     hideElement(izdelkiElement);
     hideElement(profilElement);

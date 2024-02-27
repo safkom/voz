@@ -14,6 +14,7 @@ if ($result->num_rows > 0) {
     echo "<tr>";
     echo "<th>Ime</th>";
     echo "<th>Uredi polja</th>";
+    echo "<th>Dodaj polja</th>";
     echo "<th>Izbriši polja</th>";
     echo "<th>Izbriši izdelek</th>";
     echo "</tr>";
@@ -46,7 +47,8 @@ if ($result->num_rows > 0) {
             array_push($dodatki, $dodatek);
         }
         echo "<td><button class='edit-konfigurator-btn' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Uredi</button></td>";
-        echo "<td><button class='delete-konfigurator-fields-btn' data-konfigurator-id='" . $konfigurator["id"] . "'>Izbriši polja</button></td>";
+        echo "<td><button class='add-konfigurator-fields-btn' data-konfigurator-id='" . $konfigurator["id"] . "'>Dodaj polja</button></td>";
+        echo "<td><button class='delete-konfigurator-fields-btn' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Izbriši polja</button></td>";
         echo "<td><button class='delete-konfigurator-btn' data-konfigurator-id='" . $konfigurator["id"] . "'>Izbriši</button></td>";
         echo "</tr>";
     }
@@ -63,6 +65,11 @@ if ($result->num_rows > 0) {
         <form id="konfiguratorForm" action="info/dodajkonfigurator.php" method="POST">
             <label>Ime</label>
             <input type="text" id="ime" name="ime" required><br><br>
+            <button id="addFieldsBtn" type = "button">Dodaj več velikosti</button>
+            <button id="addRezkarBtn" type = "button">Dodaj več rezkarjev</button>
+            <button id="addLaserBtn" type = "button">Dodaj več laserjev</button>
+            <button id="addDodatekBtn" type = "button">Dodaj več dodatkov</button>
+            <br><br>
 
             <h3>Dodaj velikosti</h3>
             <div id="velikostFields">
@@ -108,11 +115,5 @@ if ($result->num_rows > 0) {
             <button type="button" class="close-konfigurator-btn" id="nazajIzdelekButton">Zapri</button>
         </form>
     </div>
-
-    <br>
-    <button id="addFieldsBtn">Dodaj več velikosti</button>
-    <button id="addRezkarBtn">Dodaj več rezkarjev</button>
-    <button id="addLaserBtn">Dodaj več laserjev</button>
-    <button id="addDodatekBtn">Dodaj več dodatkov</button>
 </div>
 
