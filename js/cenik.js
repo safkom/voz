@@ -42,8 +42,11 @@ function showPrice(dimensions) {
   }
 }
 
-
+var machineid = 0;
 function fetchConfigurations(machine) {
+  machineid = machine;
+  //find <p> with id= konfigurator_id and set its innerHTML to machineid
+  document.getElementById('konfigurator_id').innerHTML = machineid;
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'info/podatki.php?machine=' + machine, true);
   xhr.onload = function() {
@@ -144,31 +147,7 @@ function createOptionButtonDodatki(group, machine, label, price, db_id) {
   return optionButton;
 }
 
-document.getElementById('povprasevanje').addEventListener('click', function() {
-  var selectedSize = document.querySelector('.option-button.selected[data-group="size"]');
-  var selectedSizeId = selectedSize ? selectedSize.getAttribute('database-id') : null;
 
-  var selectedDrilling = document.querySelector('.option-button.selected[data-group="drilling"]');
-  var selectedDrillingId = selectedDrilling ? selectedDrilling.getAttribute('database-id') : null;
-
-  var selectedLaser = document.querySelector('.option-button.selected[data-group="laser"]');
-  var selectedLaserId = selectedLaser ? selectedLaser.getAttribute('database-id') : null;
-
-  var selectedAddons = document.querySelectorAll('.option-button.selected[data-group="addon"]');
-  var selectedAddonsIds = [];
-  selectedAddons.forEach(function(addon) {
-    selectedAddonsIds.push(addon.getAttribute('database-id'));
-  });
-
-  if (selectedSizeId && selectedDrillingId && selectedLaserId) {
-    showForm();
-
-    // Proceed with further actions here
-  } else {
-    opozoriloIzbira('Izberite velikost, rezkanje in laser.');
-    console.log(selectedSizeId, selectedDrillingId, selectedLaserId, selectedAddonsIds)
-  }
-});
 
 
 
@@ -203,13 +182,44 @@ function hideForm(){
   var configurator = document.querySelector('#cenik');
   configurator.style.display = 'block';
 }
-
-document.getElementById('nazaj').addEventListener('click', function() {
+document.addEventListener('click', function(event) {
+  if(event.target && event.target.id === 'nazaj') {
   hideForm();
+  }
 });
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+  document.addEventListener('click', function(event) {
+    if (event.target && event.target.id === 'povprasevanje') {
+    var selectedSize = document.querySelector('.option-button.selected[data-group="size"]');
+    var selectedSizeId = selectedSize ? selectedSize.getAttribute('database-id') : null;
+  
+    var selectedDrilling = document.querySelector('.option-button.selected[data-group="drilling"]');
+    var selectedDrillingId = selectedDrilling ? selectedDrilling.getAttribute('database-id') : null;
+  
+    var selectedLaser = document.querySelector('.option-button.selected[data-group="laser"]');
+    var selectedLaserId = selectedLaser ? selectedLaser.getAttribute('database-id') : null;
+  
+    var selectedAddons = document.querySelectorAll('.option-button.selected[data-group="addon"]');
+    var selectedAddonsIds = [];
+    selectedAddons.forEach(function(addon) {
+      selectedAddonsIds.push(addon.getAttribute('database-id'));
+    });
+  
+    if (selectedSizeId && selectedDrillingId && selectedLaserId) {
+      showForm();
+  
+      // Proceed with further actions here
+    } else {
+      opozoriloIzbira('Izberite velikost, rezkanje in laser.');
+      console.log(selectedSizeId, selectedDrillingId, selectedLaserId, selectedAddonsIds)
+    }
+  }
+  });
+
+
   var submitButton = document.querySelector('.submit-button-form');
 
   submitButton.addEventListener('click', function(event) {
@@ -254,14 +264,16 @@ document.addEventListener("DOMContentLoaded", function() {
       formData.append('email', emailInput);
       formData.append('opombe', messageInput);
       formData.append('telefon', phoneInput);
-      formData.append('konfigurator', document.getElementById('konfigurator').textContent);
+      formData.append('konfigurator', document.getElementById('konfigurator_id').innerHTML);
 
+      
       // AJAX request
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'info/povprasevanje.php', true);
       xhr.onload = function() {
           if (xhr.status === 200) {
               // show success div
+              console.log(xhr.responseText);
               var successDiv = document.querySelector('.success');
               successDiv.style.display = 'block';
               successDiv.classList.add('fade-in');

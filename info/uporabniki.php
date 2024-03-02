@@ -31,10 +31,10 @@ if ($result->num_rows > 0) {
         echo "<td>" . $user["ime"] . " " . $user["priimek"] . "</td>";
         echo "<td>" . $user["mail"] . "</td>";
         echo "<td>" . $admin . "</td>";
-        echo "<td><button class='edit-user-btn' data-user-id='" . $user["id"] . "' data-user-name = '".$user["ime"]."' data-user-surname = '".$user['priimek']."' data-user-mail = '".$user['mail']."'>Uredi</button></td>";
+        echo "<td><button class='edit-user-btn gray-button' data-user-id='" . $user["id"] . "' data-user-name = '".$user["ime"]."' data-user-surname = '".$user['priimek']."' data-user-mail = '".$user['mail']."'>Uredi</button></td>";
         //dont allow to delete the user if it's the logged in user
         if($user["id"] != $_SESSION["id"]){
-            echo "<td><button class='delete-user-btn' data-user-id='" . $user["id"] . "'>Izbriši</button></td>";
+            echo "<td><button class='delete-user-btn red-button' data-user-id='" . $user["id"] . "'>Izbriši</button></td>";
         }
         else{
             echo "<td>Ne moreš izbrisati sebe?</td>";

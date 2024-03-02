@@ -28,10 +28,13 @@
             <button class="btn btn-outline-light" id = "narocilaButton">Naročila</button>
             <button class="btn btn-outline-light" id = "izdelkiButton">Izdelki</button>
             <?php
+            if($_SESSION["admin"] == 1){
+                echo "<button class='btn btn-outline-light' id = 'straniButton'>Strani</button>";
+            }
             // if the user is an admin, show the uporabniki button
             if($_SESSION["admin"] == 1){
                 echo "<button class='btn btn-outline-light' id = 'uporabnikiButton'>Uporabniki</button>";
-            }  
+            }
             ?>
         </div>
 
@@ -61,6 +64,8 @@ if(isset($_SESSION["obvestilo"])){
 
 <?php include_once 'info/profil.php'; ?>
 
+<?php include_once 'info/strani.php'; ?>
+
 <?php include_once 'info/uporabniki.php'; ?>
 
 <div class="popup-container" id="popupContainer">
@@ -73,4 +78,5 @@ if(isset($_SESSION["obvestilo"])){
 <script src="js/vozek.js"></script>
 <script src="js/voz.js"></script>
 <script src="js/izdelki.js"></script>
+<script src="js/strani.js"></script>
 </html>

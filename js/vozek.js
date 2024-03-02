@@ -19,6 +19,8 @@ document.getElementById("narocilaButton").addEventListener("click", function() {
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
+    var straniContainer = document.querySelector('#straniContainer');
+    var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
@@ -32,11 +34,47 @@ document.getElementById("narocilaButton").addEventListener("click", function() {
     if(document.querySelector('#addPoljaContainer') !== null){
         hideElement(addPoljaContainer);
     }
-
+    hideElement(createStranContainer);
     hideElement(izdelkiElement);
+    hideElement(straniContainer);
     hideElement(uporabnikiElement);
     hideElement(profilElement);
     showElement(narocilaElement);
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+});
+
+document.getElementById("straniButton").addEventListener("click", function() {
+    // Hide profil and show narocila
+    var profilElement = document.querySelector('#profilContainer');
+    var narocilaElement = document.querySelector('#narocilaContainer');
+    var uporabnikiElement = document.querySelector('#uporabnikiContainer');
+    var izdelkiElement = document.querySelector('#izdelkiContainer');
+    var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
+    var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
+    var addPoljaContainer = document.querySelector('#addPoljaContainer');
+    var straniContainer = document.querySelector('#straniContainer');
+    var createStranContainer = document.querySelector('#create-page-form');
+    if(document.querySelector('#editIzdelekContainer') !== null){
+        var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
+    }
+        hideElement(dodajIzdelekContainer);
+        if(document.querySelector('#editIzdelekContainer') !== null){
+        hideElement(editIzdelekContainer);
+    }
+    if(document.querySelector('#deletePoljaContainer') !== null){
+        hideElement(deletePoljaContainer);
+    }
+    if(document.querySelector('#addPoljaContainer') !== null){
+        hideElement(addPoljaContainer);
+    }
+    hideElement(createStranContainer);
+    hideElement(narocilaElement);
+    hideElement(izdelkiElement);
+    hideElement(uporabnikiElement);
+    hideElement(profilElement);
+    showElement(straniContainer);
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
@@ -75,6 +113,8 @@ document.getElementById("izdelkiButton").addEventListener("click", function() {
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
+    var straniContainer = document.querySelector('#straniContainer');
+    var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
     var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
     }
@@ -88,6 +128,8 @@ document.getElementById("izdelkiButton").addEventListener("click", function() {
     if(document.querySelector('#addPoljaContainer') !== null){
         hideElement(addPoljaContainer);
     }
+    hideElement(straniContainer);
+    hideElement(createStranContainer);
     hideElement(narocilaElement);
     hideElement(uporabnikiElement);
     hideElement(profilElement);
@@ -109,6 +151,8 @@ document.getElementById("profilButton").addEventListener("click", function() {
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
+    var straniContainer = document.querySelector('#straniContainer');
+    var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
@@ -122,6 +166,8 @@ document.getElementById("profilButton").addEventListener("click", function() {
         if(document.querySelector('#addPoljaContainer') !== null){
             hideElement(addPoljaContainer);
         }
+        hideElement(straniContainer);
+        hideElement(createStranContainer);
     hideElement(izdelkiElement);
     hideElement(uporabnikiElement);
     hideElement(narocilaElement);
@@ -140,6 +186,8 @@ document.getElementById("uporabnikiButton").addEventListener("click", function()
     var dodajIzdelekContainer = document.querySelector('#novIzdelekContainer');
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
+    var straniContainer = document.querySelector('#straniContainer');
+    var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
@@ -153,6 +201,8 @@ document.getElementById("uporabnikiButton").addEventListener("click", function()
         if(document.querySelector('#addPoljaContainer') !== null){
             hideElement(addPoljaContainer);
         }
+    hideElement(straniContainer);
+    hideElement(createStranContainer);
     hideElement(izdelkiElement);
     hideElement(profilElement);
     hideElement(narocilaElement);

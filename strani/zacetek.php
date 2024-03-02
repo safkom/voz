@@ -1,4 +1,4 @@
-<div class = "container zacetek hidden">
+<div class = "container stran" id = "zacetek">
 
     <header class="text-center">
         <h1 class = "naslovi">Računalniško vodeni stroji</h1>

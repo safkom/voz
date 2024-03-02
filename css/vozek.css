@@ -105,6 +105,7 @@ tr:nth-child(even) {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.red-button,
 .delete-order-btn {
     background-color: red;
     color: #fff;
@@ -119,6 +120,7 @@ tr:nth-child(even) {
     background-color: dark;
 }
 
+.red-button:hover,
 .delete-order-btn:hover {
     background-color: darkred;
 }
@@ -182,6 +184,7 @@ tr:nth-child(even) {
     width: 50px;
 }
 
+.blue-button,
 .profile-submit-button{
     background-color: #007bff;
     color: #fff;
@@ -191,6 +194,27 @@ tr:nth-child(even) {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
+.gray-button{
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.blue-button:hover,
+.profile-submit-button:hover{
+    background-color: #0056b3;
+}
+
+.gray-button:hover{
+    background-color: #5a6268;
+}
+
 
 .edit-profile-submit-button{
   background-color: #007bff;

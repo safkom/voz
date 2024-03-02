@@ -5,11 +5,29 @@
 </a></div>
     <div class="navbar-center"></div>
     <div class="navbar-right">
-        <button class="btn btn-outline-light" id="zacetek" onclick="deselectButtons(); ">Na začetek</button>
-        <button class="btn btn-outline-light" id="standard">Standard</button>
-        <button class="btn btn-outline-light" id="profesional">Profesional</button>
-        <button class="btn btn-outline-light" id="jermenski">Jermenski</button>
-        <button class="btn btn-outline-light" id="visoki">Visoki Z</button>
+        <button class="btn btn-outline-light" id="zacetekButton" onclick ='ShowPage("zacetek", 0)'>Na začetek</button>
+        <?php
+        require_once 'info/baza.php';
+        $sql = "SELECT * FROM strani";
+        $result = $conn->query($sql);
+        $strani = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $strani[] = $row;
+            }
+        }
+        //echo the pages seperatly
+        foreach($strani as $stran){
+            if($stran["konfigurator_id"] == NULL){
+                $konfigurator_id = 0;
+            }
+            else{
+                $konfigurator_id = $stran["konfigurator_id"];
+            }
+            echo "<button class='btn btn-outline-light' onclick='ShowPage(\"" . str_replace(' ', '', strtolower($stran["naslov"])) . "\", ".$konfigurator_id.")'>" . $stran["naslov"] . "</button>";
+
+        }
+        ?>
     </div>
 </nav>
 <div class = "content-below-navbar">

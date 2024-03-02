@@ -1,4 +1,5 @@
 <section class = "text-section">
+    <p id = "konfigurator_id" style = "display:none;"></p>
             <h2 class = "konfigurator">Konfigurator</h2>
             <div class="cenik">
                 <div id = "cenik">

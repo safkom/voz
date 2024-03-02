@@ -1,7 +1,7 @@
 <div class="container" id = "izdelkiContainer" style = "display: none; text-align: center;">
     <h2>Izdelki</h2>
     <p style = "text-align: center;">Preglej in urejaj izdelke</p>
-    <button id="dodajIzdelekButton" style="margin: auto;">Dodaj izdelke</button>
+    <button id="dodajIzdelekButton" class = "blue-button" style="margin: auto;">Dodaj izdelke</button>
     <br>
     <br>
 <?php
@@ -46,10 +46,10 @@ if ($result->num_rows > 0) {
         while ($dodatek = $result2->fetch_assoc()) {
             array_push($dodatki, $dodatek);
         }
-        echo "<td><button class='edit-konfigurator-btn' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Uredi</button></td>";
-        echo "<td><button class='add-konfigurator-fields-btn' data-konfigurator-id='" . $konfigurator["id"] . "'>Dodaj polja</button></td>";
-        echo "<td><button class='delete-konfigurator-fields-btn' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Izbriši polja</button></td>";
-        echo "<td><button class='delete-konfigurator-btn' data-konfigurator-id='" . $konfigurator["id"] . "'>Izbriši</button></td>";
+        echo "<td><button class='edit-konfigurator-btn gray-button' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Uredi</button></td>";
+        echo "<td><button class='add-konfigurator-fields-btn gray-button' data-konfigurator-id='" . $konfigurator["id"] . "'>Dodaj polja</button></td>";
+        echo "<td><button class='delete-konfigurator-fields-btn red-button' data-konfigurator-id='" . $konfigurator["id"] . "' data-konfigurator-ime='" . $konfigurator["ime"] . "' data-velikosti='" . json_encode($velikosti) . "' data-rezkarji='" . json_encode($rezkarji) . "' data-laserji='" . json_encode($laserji) . "' data-dodatki='" . json_encode($dodatki) . "'>Izbriši polja</button></td>";
+        echo "<td><button class='delete-konfigurator-btn red-button' data-konfigurator-id='" . $konfigurator["id"] . "'>Izbriši</button></td>";
         echo "</tr>";
     }
     echo "</table>";

@@ -12,47 +12,43 @@
     <link rel="stylesheet" type="text/css" href="css/cenik.css">
     <title>Voz</title>
 </head>
-<body>
-<p id = "konfigurator" style = "display: none;"></p>
+<body onload="zacetek()">
+<script src="js/prikaz.js"></script>
+<script src="js/voz.js"></script>
+<script src="js/cenik.js"></script>
 <?php include_once 'info/content.php'; ?>
 <?php include_once 'info/baza.php'; ?>
-<div class="image-container-zacetek hidden">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="fade-overlay"></div>
-</div>
-<div class="image-container-jermenski hidden">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="fade-overlay"></div>
-</div>
-<div class="image-container-profesional hidden">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="fade-overlay"></div>
-</div>
-<div class="image-container-standard hidden">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="fade-overlay"></div>
-</div>
-<div class="image-container-visoki hidden">
+
+<div class="image-container" id = "zacetek" style = "background-image: url('img/1.jpg');">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="fade-overlay"></div>
 </div>
 
-<?php include_once 'strani/zacetek.php'; ?>
+<?php
+$sql = "SELECT * FROM strani";
+$result = $conn->query($sql);
+$strani = array();
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $strani[] = $row;
+    }
+}
+$conn->close();
+foreach($strani as $stran){
+    echo $stran["stran-image"];
+}
 
-<?php include_once 'strani/jermenski.php'; ?>
+include_once 'strani/zacetek.php';
 
-<?php include_once 'strani/profesional.php'; ?>
-
-<?php include_once 'strani/standard.php'; ?>
-
-<?php include_once 'strani/visoki.php'; ?>
+//echo the pages seperatly
+foreach($strani as $stran){
+    echo $stran["stran"];
+}
+?>
 <div class ="price">
 <?php include_once 'info/cenik.php'; ?>
 </div>
 <?php include_once 'info/footer.php'; ?>
-<script src="js/prikaz.js"></script>
-<script src="js/voz.js"></script>
-<script src="js/cenik.js"></script>
 </body>
 
 </html>

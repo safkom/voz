@@ -13,12 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $velikost_id = $_POST['selectedSizeId'];
     $rezkar_id = $_POST['selectedDrillingId'];
     $laser_id = $_POST['selectedLaserId'];
-    $konfigurator = $_POST['konfigurator'];
-
-    $konfiguratorId_sql = "SELECT id FROM konfigurator WHERE ime = lower('$konfigurator')";
-    $konfiguratorId_result = $conn->query($konfiguratorId_sql);
-    $konfiguratorId = $konfiguratorId_result->fetch_assoc();
-    $konfigurator = $konfiguratorId['id'];
+    $konfiguratorId = $_POST['konfigurator'];
 
     // Insert data into the narocila table
     $sql_narocila = "INSERT INTO narocila (konfigurator_id ,velikost_id, rezkar_id, laser_id, opombe) VALUES (?, ?, ?, ?, ?)";

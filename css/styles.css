@@ -27,6 +27,7 @@ header h1 {
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
+    animation: fadeIn 0.5s ease; 
 }
 
 /* Text section styles */
@@ -114,30 +115,8 @@ footer {
         font-size: 0.9rem; /* Further adjusted font size for smaller screens */
     }
 }
-.image-container-zacetek {
-    background: url('../img/1.jpg') center center/cover no-repeat; /* Image fills container without changing aspect ratio */
-}
 
-.image-container-jermenski {
-    background: url('../img/19.jpg') center center/cover no-repeat; /* Image fills container without changing aspect ratio */
-}
-
-.image-container-profesional {
-    background: url('../img/13.jpg') center center/cover no-repeat; /* Image fills container without changing aspect ratio */
-}
-
-.image-container-standard {
-    background: url('../img/6.jpg') center center/cover no-repeat; /* Image fills container without changing aspect ratio */
-}
-
-.image-container-visoki {
-    background: url('../img/22.jpg') center center/cover no-repeat; /* Image fills container without changing aspect ratio */
-}
-.image-container-zacetek,
-.image-container-jermenski,
-.image-container-profesional,
-.image-container-standard,
-.image-container-visoki {
+.image-container {
     background-size: cover; /* Cover the entire element with the image */
     background-position: center; /* Center the image within the element */
     position: fixed; /* Changed from fixed to absolute */
@@ -146,19 +125,20 @@ footer {
     width: 100%;
     height: 100%;
     z-index:-1;
+    animation: fadeIn 0.5s ease; 
 }
 
-
-/* Adjust opacity and gradient for the fade overlay */
 .fade-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 3));
-    z-index: 1; /* Ensure the overlay is above the image */
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust overlay color and opacity as needed */
 }
+
+
+
 .pomembno{
     /* add underline, enhance text, to look important*/
     font-size: 1.5rem;
@@ -204,8 +184,6 @@ footer {
     background-color: #45a049; /* Darker Green */
   }
 
-  
-
   /* css for opozorilo-izbira, a warning */
     .opozorilo-izbira{
         font-size: 1.5rem;
@@ -213,4 +191,15 @@ footer {
         color: black;
         text-align: center;
     }
+
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
   
