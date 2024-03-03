@@ -65,52 +65,44 @@ if ($result->num_rows > 0) {
         <form id="konfiguratorForm" action="info/dodajkonfigurator.php" method="POST">
             <label>Ime</label>
             <input type="text" id="ime" name="ime" required><br><br>
-            <button id="addFieldsBtn" type = "button">Dodaj več velikosti</button>
-            <button id="addRezkarBtn" type = "button">Dodaj več rezkarjev</button>
-            <button id="addLaserBtn" type = "button">Dodaj več laserjev</button>
-            <button id="addDodatekBtn" type = "button">Dodaj več dodatkov</button>
+            <button id="addFieldsBtn" class = "blueBtn" type = "button">Dodaj več velikosti</button>
+            <button id="addRezkarBtn" class = "yellowBtn" type = "button">Dodaj več rezkarjev</button>
+            <button id="addLaserBtn" class = "greenBtn" type = "button">Dodaj več laserjev</button>
+            <button id="addDodatekBtn" class = "redBtn" type = "button">Dodaj več dodatkov</button>
             <br><br>
-
+            <div class = "izdelki-box">
+            <div class = "box upper-left">
             <h3>Dodaj velikosti</h3>
             <div id="velikostFields">
                 <div class="velikost">
-                    <label>Velikost</label>
-                    <input type="text" name="velikost[]" required><br>
-                    <label>Cena</label>
-                    <input type="number" name="velikost_cena[]" required><br><br>
                 </div>
             </div>
+            </div>
 
+            <div class = "box upper-right">
             <h3>Dodaj rezkarje</h3>
             <div id="rezkarjiContainer">
                 <div class="rezkar">
-                    <label>Rezkar</label>
-                    <input type="text" name="rezkar[]" required><br>
-                    <label>Cena</label>
-                    <input type="number" name="rezkar_cena[]" required><br><br>
                 </div>
             </div>
-
+            </div>
+            
+            <div class = "box lower-left">
             <h3>Dodaj laserje</h3>
             <div id="laserjiContainer">
                 <div class="laser">
-                    <label>Laser</label>
-                    <input type="text" name="laser[]" required><br>
-                    <label>Cena</label>
-                    <input type="number" name="laser_cena[]" required><br><br>
                 </div>
             </div>
+            </div>
 
+            <div class = "box lower-right">
             <h3>Dodaj dodatke</h3>
             <div id="dodatkiContainer">
                 <div class="dodatek">
-                    <label>Dodatek</label>
-                    <input type="text" name="dodatek[]" required><br>
-                    <label>Cena</label>
-                    <input type="number" name="dodatek_cena[]" required><br><br>
                 </div>
             </div>
-
+            </div>
+        </div>
             <button type="submit" class = "blue-button">Dodaj</button>
             <button type="button" class="close-konfigurator-btn red-button" id="nazajIzdelekButton">Zapri</button>
         </form>

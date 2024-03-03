@@ -27,6 +27,7 @@ function addText() {
     // Add delete button
     var deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
+    deleteButton.classList.add("red-button");
     deleteButton.style.marginLeft = "10px"; // Add margin-left
     deleteButton.onclick = function() {
         textSection.remove(); // Remove the entire section when delete button is clicked
@@ -88,6 +89,7 @@ function addImage() {
 
     var deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
+    deleteButton.classList.add("red-button");
     deleteButton.onclick = function() {
         textSection.remove(); // Remove the entire section when delete button is clicked
     };
