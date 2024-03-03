@@ -26,6 +26,7 @@ function ShowPage(divname, konfigurator_id) {
         }
         fetchConfigurations(konfigurator_id);
     }
+    window.scrollTo(0,0);
 }
 
 function zacetek(){
@@ -53,6 +54,7 @@ function zacetek(){
     for (var i = 0; i < divs.length; i++) {
         divs[i].style.display = "none";
     }
+    window.scrollTo(0,0);
 }
 
 

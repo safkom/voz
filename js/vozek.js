@@ -349,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <input type="text" id="editEmail" name="email" value="${userMail}" required><br>
                         <div id = "userId" style = "display:none;">${userId}</div>
                         <div class="button-container">
-                        <button class="edit-profile-submit-button">Shrani</button>
+                        <button class="edit-profile-submit-button blue-button">Shrani</button>
                         <button class="delete-order-btn" id="close-popup" style="float: right;">Zapri</button></div>
                 `;
     
@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <label for "admin">Admin?</label>
                     <input type="checkbox" id="admin" name="admin" value="admin">
                     <div class="button-container">
-                    <button class="add-profile-submit-button">Dodaj</button>
+                    <button class="add-profile-submit-button blue-button">Dodaj</button>
                     <button class="delete-order-btn" id="close-popup" style="float: right;">Zapri</button></div>
             `;
     

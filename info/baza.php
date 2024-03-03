@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "voz";
+    $servername = "safko.eu";
+    $username = "safkoeu_voz";
+    $password = "m1h42005";
+    $database = "safkoeu_voz";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -11,4 +11,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    
+    // Set character set to UTF-8
+    $conn->set_charset("utf8");
 ?>

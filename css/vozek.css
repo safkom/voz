@@ -106,7 +106,8 @@ tr:nth-child(even) {
     transition: background-color 0.3s;
 }
 .red-button,
-.delete-order-btn {
+.delete-order-btn,
+.deleteFieldBtn {
     background-color: red;
     color: #fff;
     border: none;
@@ -121,12 +122,12 @@ tr:nth-child(even) {
 }
 
 .red-button:hover,
-.delete-order-btn:hover {
+.delete-order-btn:hover,
+.deleteFieldBtn:hover {
     background-color: darkred;
 }
 
 .modern-form {
-    max-width: 400px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
   }
@@ -271,3 +272,93 @@ button {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+.izdelki-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  justify-content: center; /* Center the items horizontally */
+  align-content: center; /* Center the items vertically */
+}
+
+
+
+.box {
+  display: grid;
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  align-items: center; /* Center the content vertically */
+}
+
+
+.box.upper-left {
+  background-color: rgb(221, 245, 253);
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.box.upper-right {
+  background-color: rgb(255, 255, 220);
+  display: grid;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.box.lower-left {
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: rgb(206, 255, 206);
+}
+
+.box.lower-right {
+  display: grid;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: rgb(255, 212, 212);
+}
+
+.yellowBtn {
+  background-color: rgb(255, 255, 220);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.blueBtn {
+  background-color: rgb(221, 245, 253);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.greenBtn {
+  background-color: rgb(206, 255, 206);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.redBtn {
+  background-color: rgb(255, 212, 212);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+

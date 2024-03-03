@@ -71,7 +71,7 @@
             <div id = "predogled">
             </div>
     </form>
-    <button type="button" class="btn btn-outline-dark" onclick="SavePage()">Shrani stran</button>
+    <button type="button" class="blue-button" onclick="SavePage()">Shrani stran</button>
 </div>
 </div>
 

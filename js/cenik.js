@@ -70,6 +70,7 @@ function generateConfiguration(Data) {
   document.getElementById('drilling-options').innerHTML = '';
   document.getElementById('laser-options').innerHTML = '';
   document.getElementById('addon-options').innerHTML = '';
+  document.getElementById('total-price').innerHTML = 'Skupna cena: 0€';
 
   // Check if Data is empty
   if (Object.values(Data).every(arr => arr.length === 0)) {

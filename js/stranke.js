@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>Ime in priimek: ${customerName}</p>
                 <p>Email: ${customerEmail}</p>
                 <p>Telefon: ${customerPhone}</p>
-                <button class="close-popup-btn">Zapri</button>
+                <button class="close-popup-btn red-button">Zapri</button>
             `;
 
             var popupContainer = document.getElementById('popupContainer');

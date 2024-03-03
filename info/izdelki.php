@@ -111,8 +111,8 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
 
-            <button type="submit">Dodaj</button>
-            <button type="button" class="close-konfigurator-btn" id="nazajIzdelekButton">Zapri</button>
+            <button type="submit" class = "blue-button">Dodaj</button>
+            <button type="button" class="close-konfigurator-btn red-button" id="nazajIzdelekButton">Zapri</button>
         </form>
     </div>
 </div>

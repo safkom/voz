@@ -116,43 +116,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Create a new form
         var formContainer = document.createElement('div');
-        formContainer.classList.add('container');
+        formContainer.classList.add('container'); // Add both container and izdelki-box classes
         formContainer.id = 'editIzdelekContainer';
+
         formContainer.innerHTML = `
+        <div class="modern-form">
             <h2>Uredi izdelek</h2>
-            <div class="modern-form">
-                <form id="editKonfiguratorForm" action="info/uredikonfigurator.php" method="POST">
-                    <label>Uredi Ime</label>
-                    <input type="text" id="ime" name="ime" value="${konfiguratorName}" required><br><br>
-
-                    <h3>Uredi velikosti</h3>
-                    <div id="velikostFields">
-                        ${generateFieldsHTML(konfiguratorVelikost, 'velikost', 'Velikost')}
-                    </div>
-
-                    <h3>Uredi rezkarje</h3>
-                    <div id="rezkarjiContainer">
-                        ${generateFieldsHTML(konfiguratorRezkarji, 'rezkar', 'Rezkar')}
-                    </div>
-
-                    <h3>Uredi laserje</h3>
-                    <div id="laserjiContainer">
-                        ${generateFieldsHTML(konfiguratorLaserji, 'laser', 'Laser')}
-                    </div>
-
-                    <h3>Uredi dodatke</h3>
-                    <div id="dodatkiContainer">
-                        ${generateFieldsHTML(konfiguratorDodatek, 'dodatek', 'Dodatek')}
-                    </div>
-                    <input type="hidden" name="konfigurator_id" value="${konfiguratorId}">
-
-                    <button type="submit">Uredi</button>
-                    <button type="button" class="close-konfigurator-btn" id="nazajIzdelekButton">Zapri</button>
-                </form>
+            <form id="editKonfiguratorForm" action="info/uredikonfigurator.php" method="POST">
+            <label>Uredi Ime</label>
+            <input type="text" id="ime" name="ime" value="${konfiguratorName}" required><br><br>
+            <div class = "izdelki-box">
+            <div class="box upper-left" id="velikostFields">
+                <h3>Uredi velikosti</h3>
+                ${generateFieldsHTML(konfiguratorVelikost, 'velikost', 'Velikost')}
             </div>
 
-            <br>
-            <div id="deletedFields"></div>
+            <div class="box upper-right" id="rezkarjiContainer">
+                <h3>Uredi rezkarje</h3>
+                ${generateFieldsHTML(konfiguratorRezkarji, 'rezkar', 'Rezkar')}
+            </div>
+
+            <div class="box lower-left" id="laserjiContainer">
+                <h3>Uredi laserje</h3>
+                ${generateFieldsHTML(konfiguratorLaserji, 'laser', 'Laser')}
+            </div>
+
+            <div class="box lower-right" id="dodatkiContainer">
+                <h3>Uredi dodatke</h3>
+                ${generateFieldsHTML(konfiguratorDodatek, 'dodatek', 'Dodatek')}
+            </div>
+            <input type="hidden" name="konfigurator_id" value="${konfiguratorId}">
+            </div>
+            <button type="submit" class = "blue-button">Uredi</button>
+            <button type="button" class="close-konfigurator-btn red-button" id="nazajIzdelekButton">Zapri</button>
+            </form>
+        </div>
+        <br>
         `;
 
         // Append the form to the document body
@@ -194,6 +193,7 @@ function generateFieldsHTML(dataArray, className) {
                 idValue = '';
         }
         fieldsHTML += `
+        <div class = "container">
             <div class="${className}" data-id="${idValue}">
                 <input type="hidden" name="${className}_id[]" value="${idValue}">
                 <label>${labelText}</label>
@@ -201,6 +201,7 @@ function generateFieldsHTML(dataArray, className) {
                 <label>Cena</label>
                 <input type="number" name="${className}_cena[]" value="${data.cena}" required><br>
             </div>
+        </div>
         `;
     });
     return fieldsHTML;
@@ -245,7 +246,7 @@ function generateFieldsHTMLReadOnly(dataArray, className) {
                 <input type="text" name="${className}" value="${inputValue}" required readonly>
                 <label>Cena</label>
                 <input type="number" name="${className}_cena[]" value="${data.cena}" required readonly><br>
-                <button class="deleteFieldDBBtn" type="button">Odstrani</button><br><br>
+                <button class="deleteFieldDBBtn red-button" type="button">Odstrani</button><br><br>
             </div>
         `;
     });
@@ -326,27 +327,37 @@ document.addEventListener('click', function(event) {
             <h2>Izbriši polja izdelka</h2>
             <div class="modern-form">
                 <form id="deleteKonfiguratorForm" readonly>
+                <div class = "izdelki-box">
+                <div class="box upper-left">
                     <h3>Velikosti</h3>
                     <div id="velikostFields">
                         ${konfiguratorVelikost.length > 0 ? generateFieldsHTMLReadOnly(konfiguratorVelikost, 'velikost') : 'Ni polj za Velikosti.'}
                     </div>
+                </div>
 
+                <div class="box upper-right">
                     <h3>Rezkarji</h3>
                     <div id="rezkarjiContainer">
                         ${konfiguratorRezkarji.length > 0 ? generateFieldsHTMLReadOnly(konfiguratorRezkarji, 'rezkar') : 'Ni polj za Rezkarje.'}
                     </div>
+                </div>
 
+                <div class="box lower-left">
                     <h3>Laserji</h3>
                     <div id="laserjiContainer">
                         ${konfiguratorLaserji.length > 0 ? generateFieldsHTMLReadOnly(konfiguratorLaserji, 'laser') : 'Ni polj za Laserje.'}
                     </div>
+                </div>
 
+                <div class="box lower-right">
                     <h3>Dodatki</h3>
                     <div id="dodatkiContainer">
                         ${konfiguratorDodatek.length > 0 ? generateFieldsHTMLReadOnly(konfiguratorDodatek, 'dodatek') : 'Ni polj za Dodatke.'}
                     </div>
+                </div>
                     <input type="hidden" name="konfigurator_id" value="${konfiguratorId}">
-                    <button type="button" class="close-konfigurator-btn" id="nazajIzdelekButton">Zapri</button>
+                    <button type="button" class="close-konfigurator-btn red-button" id="nazajIzdelekButton">Zapri</button>
+                </div>
                 </form>
             </div>
         `;
@@ -429,33 +440,38 @@ document.addEventListener('click', function(event) {
             <h2>Dodaj polja izdelka</h2><br>
             <div class="modern-form">
                 <form id="addKonfiguratorForm" action="info/dodajpolje.php" method="POST">
-                <button id="addFieldsVelikostBtn" type = "button">Dodaj več velikosti</button>
-                <button id="addFieldsRezkarBtn" type = "button">Dodaj več rezkarjev</button>
-                <button id="addFieldsLaserBtn" type = "button">Dodaj več laserjev</button>
-                <button id="addFieldsDodatekBtn" type = "button">Dodaj več dodatkov</button>
+                <button id="addFieldsVelikostBtn" class = "blueBtn" type = "button">Dodaj več velikosti</button>
+                <button id="addFieldsRezkarBtn" class = "yellowBtn" type = "button">Dodaj več rezkarjev</button>
+                <button id="addFieldsLaserBtn" class = "greenBtn" type = "button">Dodaj več laserjev</button>
+                <button id="addFieldsDodatekBtn" class = "redBtn" type = "button">Dodaj več dodatkov</button>
                 <br><br>
+                <div class = "izdelki-box">
+                <div class="box upper-left">
                     <h3>Velikosti</h3>
                     <div id="velikostAddFields">
-                        
+                </div>
                     </div>
-
+                    <div class="box upper-right">
                     <h3>Rezkarji</h3>
                     <div id="rezkarjiAddContainer">
                         
                     </div>
-
+                    </div>
+                    <div class="box lower-left">
                     <h3>Laserji</h3>
                     <div id="laserjiAddContainer">
-                        
+                    
                     </div>
-
+                    </div>
+                    <div class="box lower-right">
                     <h3>Dodatki</h3>
                     <div id="dodatkiAddContainer">
                         
                     </div>
+                    </div>
                     <input type="hidden" name="konfigurator_id" value="${konfiguratorId}">
-                    <button type="submit">Dodaj</button>
-                    <button type="button" class="close-konfigurator-btn" id="nazajIzdelekButton">Zapri</button>
+                    <button type="submit" class = "blue-button">Dodaj</button>
+                    <button type="button" class="close-konfigurator-btn red-button" id="nazajIzdelekButton">Zapri</button>
                 </form>
             </div>
         `;
