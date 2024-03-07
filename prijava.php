@@ -1,4 +1,45 @@
-<!DOCTYPE html>
+<?php
+session_start();
+require_once "info/baza.php";
+
+// Process login
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+    // Validate and sanitize inputs
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
+
+    // Prepare and execute SQL statement using prepared statements
+    $stmt = $conn->prepare("SELECT id, mail, ime, priimek, geslo, admin FROM uporabniki WHERE mail = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        // Verify password
+        if (password_verify($password, $row['geslo'])) {
+            // Set session variables
+            $_SESSION["loggedin"] = true;
+            $_SESSION["id"] = $row['id'];
+            $_SESSION["email"] = $row['mail'];
+            $_SESSION["ime"] = $row['ime'];
+            $_SESSION["priimek"] = $row['priimek'];
+            $_SESSION["admin"] = $row['admin'];
+            // Redirect to dashboard or home page upon successful login
+            header("Location: vozek.php");
+            exit;
+        } else {
+            // Display error message for incorrect credentials
+            $error_message = "Napačni email ali geslo. Poskusi znova.";
+        }
+    } else {
+        // Display error message for non-existing email
+        $error_message = "Napačni email ali geslo. Poskusi znova.";
+    }
+}
+
+?>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -68,45 +109,12 @@
         margin-bottom: 10px;
     }
 </style>
-</head>
-<body>
 
 <div class="container">
     <h2>Login</h2>
-    <?php
-    require_once "info/baza.php";
-    // Process login
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {// Validate login credentials (for demonstration purpose, you should use secure authentication methods)
-        if(isset($_POST['email']) && isset($_POST['password'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $sql = "SELECT * FROM uporabniki WHERE mail = '$email'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['geslo'])) {
-                // Set session variables
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $row['id'];
-                $_SESSION["email"] = $row['mail'];
-                $_SESSION["ime"] = $row['ime'];
-                $_SESSION["priimek"] = $row['priimek'];
-                $_SESSION["admin"] = $row['admin'];
-                // Redirect to dashboard or home page upon successful login
-                header("Location: vozek.php");
-                exit;
-            } else {
-                // Display error message for incorrect credentials
-                echo '<p class="error-message">Napačni email ali geslo. Poskusi znova.</p>';
-            }
-        } else {
-            // Display error message for non-existing email
-            echo '<p class="error-message">Napačni email ali geslo. Poskusi znova.</p>';
-        }
-    }
-    }
-    ?>
+    <?php if(isset($error_message)): ?>
+        <p class="error-message"><?php echo $error_message; ?></p>
+    <?php endif; ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label>Email:</label>
         <input type="text" name="email" required><br>

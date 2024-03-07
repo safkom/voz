@@ -9,16 +9,35 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <?php
-    // Check if user is logged in
-    session_start();
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-        header("location: prijava.php");
-        exit;
-    }
+<?php
+// Start session
+session_start();
 
-    require_once 'info/baza.php';
-    ?>
+// Check if user is logged in
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Redirect to the login page
+    header("location: prijava.php");
+    exit;
+}
+
+// Include database connection
+require_once 'info/baza.php';
+
+// Check if the user exists in the database
+$email = $_SESSION["email"];
+$stmt = $conn->prepare("SELECT id FROM uporabniki WHERE mail = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    // If user doesn't exist, logout and redirect to login page
+    session_destroy();
+    header("location: prijava.php");
+    exit;
+}
+?>
+
     <nav class="navbar">
     <div class="navbar-left">
     <a href="javascript:window.location.href=window.location.href" onclick="return false;" style = "text-decoration: none;">

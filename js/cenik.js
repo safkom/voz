@@ -156,12 +156,14 @@ function opozoriloIzbira(message) {
   var opozorilo = document.getElementById('opozorilo-izbira');
   opozorilo.style.display = 'block';
   opozorilo.innerText = '⚠️' + message;
+  var window = document.getElementById('konfigurator-window')
+  window.scrollIntoView({ behavior: 'smooth', block: 'start' });
   setTimeout(function() {
       opozorilo.style.display = 'none';
   }, 4000);
 }
 
-function showForm(){
+function showForm() {
   var configurator = document.querySelector('#cenik');
   //add fade out to configurator
   configurator.classList.remove('fade-in');
@@ -171,10 +173,16 @@ function showForm(){
 
   var form = document.querySelector('.povprasevanje-form');
   form.style.display = 'block';
+
+  // Scroll to the form element
+  var window = document.getElementById('konfigurator-window')
+  window.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   setTimeout(function() {
       form.classList.add('fade-in');
   }, 10);
 }
+
 
 function hideForm(){
   var form = document.querySelector('.povprasevanje-form');
@@ -211,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     if (selectedSizeId && selectedDrillingId && selectedLaserId) {
       showForm();
-  
+      
       // Proceed with further actions here
     } else {
       opozoriloIzbira('Izberite velikost, rezkanje in laser.');
