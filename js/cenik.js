@@ -1,11 +1,34 @@
 function selectOption(group, button) {
   const buttons = document.querySelectorAll(`[data-group="${group}"].option-button`);
-  buttons.forEach(btn => {
-    btn.classList.remove('selected');
-  });
-  button.classList.add('selected');
+
+  // Unselect all buttons if the group is 'size'
+  if (group === 'size') {
+    buttons.forEach(btn => {
+      btn.classList.remove('selected');
+    });
+  }
+  
+  // Toggle the selected state of the clicked button
+  if (button.classList.contains('selected')) {
+    button.classList.remove('selected');
+  } else {
+    button.classList.add('selected');
+  }
+
+  // Ensure only one option is selected if the group is 'drilling' or 'laser'
+  if (group === 'drilling' || group === 'laser') {
+    buttons.forEach(btn => {
+      if (btn !== button && btn.classList.contains('selected')) {
+        btn.classList.remove('selected');
+      }
+    });
+  }
+
   calculateTotalPrice();
 }
+
+
+
 
 function toggleAddon(addon) {
   event.target.classList.toggle('selected');
@@ -198,112 +221,127 @@ document.addEventListener('click', function(event) {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-
-  document.addEventListener('click', function(event) {
-    if (event.target && event.target.id === 'povprasevanje') {
+document.addEventListener('click', function(event) {
+  if (event.target && event.target.id === 'povprasevanje') {
     var selectedSize = document.querySelector('.option-button.selected[data-group="size"]');
     var selectedSizeId = selectedSize ? selectedSize.getAttribute('database-id') : null;
-  
+    
     var selectedDrilling = document.querySelector('.option-button.selected[data-group="drilling"]');
     var selectedDrillingId = selectedDrilling ? selectedDrilling.getAttribute('database-id') : null;
-  
+    
     var selectedLaser = document.querySelector('.option-button.selected[data-group="laser"]');
     var selectedLaserId = selectedLaser ? selectedLaser.getAttribute('database-id') : null;
-  
+
     var selectedAddons = document.querySelectorAll('.option-button.selected[data-group="addon"]');
     var selectedAddonsIds = [];
     selectedAddons.forEach(function(addon) {
       selectedAddonsIds.push(addon.getAttribute('database-id'));
     });
-  
-    if (selectedSizeId && selectedDrillingId && selectedLaserId) {
+
+    if (selectedSizeId) {
       showForm();
-      
+      console.log(selectedSizeId);
       // Proceed with further actions here
     } else {
-      opozoriloIzbira('Izberite velikost, rezkanje in laser.');
-      console.log(selectedSizeId, selectedDrillingId, selectedLaserId, selectedAddonsIds)
+      opozoriloIzbira('Izberite velikost za napravo.');
+      console.log(selectedSizeId);
     }
   }
-  });
+});
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
   var submitButton = document.querySelector('.submit-button-form');
+  if(submitButton){
+    submitButton.addEventListener('click', function(event) {
+      console.log("submit pressed");
+        event.preventDefault();
+  
+        // Create FormData object
+        var formData = new FormData();
+  
+        // Get selected options' IDs
+        var selectedSize = document.querySelector('.option-button.selected[data-group="size"]');
+        var selectedSizeId = selectedSize ? selectedSize.getAttribute('database-id') : null;
+  
+        var selectedDrilling = document.querySelector('.option-button.selected[data-group="drilling"]');
+        var selectedDrillingId = selectedDrilling ? selectedDrilling.getAttribute('database-id') : null;
+  
+        var selectedLaser = document.querySelector('.option-button.selected[data-group="laser"]');
+        var selectedLaserId = selectedLaser ? selectedLaser.getAttribute('database-id') : null;
+  
+        var selectedAddons = document.querySelectorAll('.option-button.selected[data-group="addon"]');
+        var selectedAddonsIds = [];
+        selectedAddons.forEach(function(addon) {
+            selectedAddonsIds.push(addon.getAttribute('database-id'));
+        });
+  
+        // Append selected option IDs to FormData object
+        formData.append('selectedSizeId', selectedSizeId);
+        formData.append('selectedDrillingId', selectedDrillingId);
+        formData.append('selectedLaserId', selectedLaserId);
+        selectedAddonsIds.forEach(function(addonId) {
+            formData.append('selectedAddonsIds[]', addonId);
+        });
+  
+        // Collect input values
+        var nameInput = document.getElementById("ime").value;
+        var emailInput = document.getElementById("email").value;
+        var messageInput = document.getElementById("opombe").value;
+        var phoneInput = document.getElementById("telefon").value;
+  
+  
+        // Append input values to FormData object
+        formData.append('ime', nameInput);
+        formData.append('email', emailInput);
+        formData.append('opombe', messageInput);
+        formData.append('telefon', phoneInput);
+        formData.append('konfigurator', document.getElementById('konfigurator_id').innerHTML);
 
-  submitButton.addEventListener('click', function(event) {
-      event.preventDefault();
+        //print the selected buttons
+        console.log(selectedSizeId);
 
-      // Create FormData object
-      var formData = new FormData();
-
-      // Get selected options' IDs
-      var selectedSize = document.querySelector('.option-button.selected[data-group="size"]');
-      var selectedSizeId = selectedSize ? selectedSize.getAttribute('database-id') : null;
-
-      var selectedDrilling = document.querySelector('.option-button.selected[data-group="drilling"]');
-      var selectedDrillingId = selectedDrilling ? selectedDrilling.getAttribute('database-id') : null;
-
-      var selectedLaser = document.querySelector('.option-button.selected[data-group="laser"]');
-      var selectedLaserId = selectedLaser ? selectedLaser.getAttribute('database-id') : null;
-
-      var selectedAddons = document.querySelectorAll('.option-button.selected[data-group="addon"]');
-      var selectedAddonsIds = [];
-      selectedAddons.forEach(function(addon) {
-          selectedAddonsIds.push(addon.getAttribute('database-id'));
-      });
-
-      // Append selected option IDs to FormData object
-      formData.append('selectedSizeId', selectedSizeId);
-      formData.append('selectedDrillingId', selectedDrillingId);
-      formData.append('selectedLaserId', selectedLaserId);
-      selectedAddonsIds.forEach(function(addonId) {
-          formData.append('selectedAddonsIds[]', addonId);
-      });
-
-      // Collect input values
-      var nameInput = document.getElementById("ime").value;
-      var emailInput = document.getElementById("email").value;
-      var messageInput = document.getElementById("opombe").value;
-      var phoneInput = document.getElementById("telefon").value;
-
-
-      // Append input values to FormData object
-      formData.append('ime', nameInput);
-      formData.append('email', emailInput);
-      formData.append('opombe', messageInput);
-      formData.append('telefon', phoneInput);
-      formData.append('konfigurator', document.getElementById('konfigurator_id').innerHTML);
-
-      
-      // AJAX request
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'info/povprasevanje.php', true);
-      xhr.onload = function() {
-          if (xhr.status === 200) {
-              // show success div
-              console.log(xhr.responseText);
-              var successDiv = document.querySelector('.success');
-              successDiv.style.display = 'block';
-              successDiv.classList.add('fade-in');
-              // hide form
-              var form = document.querySelector('.modern-form');
-              form.style.display = 'none';
-              // hide success div after 4 seconds
-              // You can show a success message or redirect the user to another page here
-          } else {
-              // Handle error response
-              console.error('Form submission failed. Status: ' + xhr.status);
-              // You can display an error message to the user here
-          }
-      };
-      xhr.onerror = function() {
-          // Handle connection error
-          console.error('Form submission failed. Connection error.');
-          // You can display an error message to the user here
-      };
-      xhr.send(formData);
-  });
+        if(selectedDrillingId == null){
+          selectedDrillingId = 0;
+        }
+        if(selectedLaserId == null){
+          selectedLaserId = 0;
+        }
+        console.log(selectedDrillingId);
+        console.log(selectedLaserId);
+        console.log(selectedAddonsIds);
+  
+        
+        // AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'info/povprasevanje.php', true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // show success div
+                console.log(xhr.responseText);
+                var successDiv = document.querySelector('.success');
+                successDiv.style.display = 'block';
+                successDiv.classList.add('fade-in');
+                // hide form
+                var form = document.querySelector('.modern-form');
+                form.style.display = 'none';
+                // hide success div after 4 seconds
+                // You can show a success message or redirect the user to another page here
+            } else {
+                // Handle error response
+                console.error('Form submission failed. Status: ' + xhr.status);
+                // You can display an error message to the user here
+            }
+        };
+        xhr.onerror = function() {
+            // Handle connection error
+            console.error('Form submission failed. Connection error.');
+            // You can display an error message to the user here
+        };
+        xhr.send(formData);
+    });
+  } 
 });
 
 
