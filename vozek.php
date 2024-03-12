@@ -69,13 +69,15 @@ if ($result->num_rows === 0) {
 <?php echo "<h2>Živjo, " . htmlspecialchars($_SESSION["ime"]) . "!</h2>";?>
 
 <?php
-if(isset($_SESSION["obvestilo"])){
-    echo "<div class = 'obvestilo'>";
-    echo "<p>" . $_SESSION["obvestilo"] . "</p>";
+if(isset($_COOKIE["obvestilo"]) && $_COOKIE["obvestilo"] !== ""){
+    echo "<div class='obvestilo'>";
+    echo "<p>" . $_COOKIE["obvestilo"] . "</p>";
     echo "</div>";
-    unset($_SESSION["obvestilo"]);
+    // Clear the cookie by setting its expiration time in the past
+    setcookie("obvestilo", "", time() - 3600);
 }
 ?>
+
 
 <?php include_once 'info/narocila.php'; ?>
 

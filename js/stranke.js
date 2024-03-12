@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 xhr.open('POST', 'info/izbrisinarocilo.php', true);
                 xhr.onload = function() {
                     if (xhr.status === 200) {
+                        document.cookie = "obvestilo=Naročilo izbrisano!; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
+                        location.reload();
                         // Reload the page
                         window.location.reload();
                     }

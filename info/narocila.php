@@ -41,14 +41,23 @@
                     $result_velikost = $conn->query($sql_velikost);
                     $velikost = $result_velikost->fetch_assoc();
                     
-
+                    if($rezkar_id !== null) {
                     $sql_rezkar = "SELECT * FROM rezkarji WHERE id = $rezkar_id";
                     $result_rezkar = $conn->query($sql_rezkar);
                     $rezkar = $result_rezkar->fetch_assoc();
+                    } 
+                    else {
+                        $rezkar = array("ime" => "Ni rezkarja");
+                    }
 
+                    if($laser_id !== null){
                     $sql_laser = "SELECT * FROM laserji WHERE id = $laser_id";
                     $result_laser = $conn->query($sql_laser);
                     $laser = $result_laser->fetch_assoc();
+                    }
+                    else{
+                        $laser = array("ime" => "Ni laserja");
+                    }
 
                     $sql_dodatki = "SELECT * FROM narocila_dodatki WHERE narocilo_id = " . $order["id"];
                     $result_dodatki = $conn->query($sql_dodatki);

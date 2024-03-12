@@ -105,16 +105,20 @@ function deleteStran(id) {
     xhr.open('POST', 'info/deletepage.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            console.log(xhr.responseText);
-            //refresh
+            document.cookie = "obvestilo=Stran uspešno izbrisana.; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
             location.reload();
+            console.log(xhr.responseText);
             // Handle success response here
         } else {
+            document.cookie = "obvestilo=Prišlo je do napake! Poskusite znova.; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
+            location.reload();
             console.error('Page deletion failed. Status: ' + xhr.status);
             // Handle error response here
         }
     };
     xhr.onerror = function() {
+        document.cookie = "obvestilo=Prišlo je do napake! Poskusite znova.; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
+            location.reload();
         console.error('Page deletion failed. Connection error.');
     };
     xhr.send(formData);

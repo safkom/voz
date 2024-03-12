@@ -81,10 +81,11 @@ document.addEventListener("DOMContentLoaded", function() {
             xhr.open('POST', 'info/deletekonfigurator.php', true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    //refresh page
+                    document.cookie = "obvestilo=Konfigurator izbrisan!; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
                     location.reload();
-    
                 } else {
+                    document.cookie = "obvestilo=Prišlo je do napake! Ne morem doseči strani. Poskusite znova.; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
+                    location.reload();
                     // Handle error response
                     console.error('Form submission failed. Status: ' + xhr.status);
                     // You can display an error message to the user here
@@ -92,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
             };
             xhr.onerror = function() {
                 // Handle connection error
+                document.cookie = "obvestilo=Prišlo je do napake! Poskusite znova.; expires=Sat, 31 Dec 9999 23:59:59 GMT; path=/";
+                location.reload();
                 console.error('Form submission failed. Connection error.');
                 // You can display an error message to the user here
             };
