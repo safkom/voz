@@ -1,6 +1,6 @@
 <section class = "text-section">
     <p id = "konfigurator_id" style = "display:none;"></p>
-            <h2 class = "konfigurator">Konfigurator</h2>
+            <h2 class = "konfigurator" id = "konfigurator-window">Konfigurator</h2>
             <div class="cenik">
                 <div id = "cenik">
                 <div class = "opozorilo-izbira" id = "opozorilo-izbira"  style = "display: none;"></div>
