@@ -5,7 +5,7 @@
 </a></div>
     <div class="navbar-center"></div>
     <div class="navbar-right">
-        <button class="btn btn-outline-light" id="zacetekButton" onclick ='ShowPage("zacetek", 0)'>Na začetek</button>
+        <button class="btn btn-outline-light" id="zacetekButton" onclick ='zacetek()'>Na začetek</button>
         <?php
         require_once 'info/baza.php';
         $sql = "SELECT * FROM strani";

@@ -45,6 +45,7 @@ foreach($strani as $stran){
     echo $stran["stran"];
 }
 ?>
+<br>
 <div class ="price">
 <?php include_once 'info/cenik.php'; ?>
 </div>
