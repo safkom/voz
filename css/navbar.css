@@ -30,7 +30,6 @@
 
 /* Style the right section of the navbar */
 .navbar-right {
-    flex: 1;
     text-align: right;
     margin-right: 100px;
 }
