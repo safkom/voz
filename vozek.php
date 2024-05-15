@@ -68,17 +68,6 @@ if ($result->num_rows === 0) {
 
 <?php echo "<h2>Živjo, " . htmlspecialchars($_SESSION["ime"]) . "!</h2>";?>
 
-<?php
-if(isset($_COOKIE["obvestilo"]) && $_COOKIE["obvestilo"] !== ""){
-    echo "<div class='obvestilo'>";
-    echo "<p>" . $_COOKIE["obvestilo"] . "</p>";
-    echo "</div>";
-    // Clear the cookie by setting its expiration time in the past
-    setcookie("obvestilo", "", time() - 3600);
-}
-?>
-
-
 <?php include_once 'info/narocila.php'; ?>
 
 <?php include_once 'info/izdelki.php'; ?>
@@ -94,10 +83,17 @@ if(isset($_COOKIE["obvestilo"]) && $_COOKIE["obvestilo"] !== ""){
     </div>
 </div>
 <?php $conn->close(); ?>
+<?php include_once 'info/alert.php'; ?>
 </body>
-<script src="js/stranke.js"></script>
-<script src="js/vozek.js"></script>
-<script src="js/voz.js"></script>
-<script src="js/izdelki.js"></script>
-<script src="js/strani.js"></script>
+<script src="js/stranke.js" charset="utf-8"></script>
+<script src="js/vozek.js" charset="utf-8"></script>
+<script src="js/voz.js" charset="utf-8"></script>
+<script src="js/izdelki.js" charset="utf-8"></script>
+<script src="js/strani.js" charset="utf-8"></script>
+<script>
+    document.cookie = 'obvestilo=; expires=Thu, 01 Jan 1970 00:00:00 GMT;  Max-Age=0;';
+    document.cookie = 'error=; expires=Thu, 01 Jan 1970 00:00:00 GMT;  Max-Age=0;';
+    document.cookie = 'warning=; expires=Thu, 01 Jan 1970 00:00:00 GMT;  Max-Age=0;';
+    document.cookie = 'good=; expires=Thu, 01 Jan 1970 00:00:00 GMT;  Max-Age=0;';
+</script>
 </html>
