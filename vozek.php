@@ -57,7 +57,7 @@ if ($result->num_rows === 0) {
             ?>
         </div>
 
-        <div class="navbar-right">
+        <div class="navbar-right-vozek">
             <button class="btn btn-outline-light" id = "profilButton">Profil</button>
             <button class="btn btn-outline-light" onclick="location.href = 'info/odjava.php';" >Odjava</button>
         </div>
