@@ -273,3 +273,73 @@ function insertHTML(formData) {
     };
     xhr.send(formData);
 }
+
+function editStran(id){
+    var stranid = id;
+    var formData = new FormData();
+    formData.append("id", id);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'info/getpage.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var page = JSON.parse(xhr.responseText);
+            var stranValue = page.stran; // Assuming "stran" is the field you want to retrieve
+            document.getElementById("stranId").innerText = stranid;
+
+            document.getElementById("edit-page-form").style.display = "block";
+            document.getElementById("straniContainer").style.display = "none";
+            document.getElementById("stranNaslov").value = page.naslov;
+            // Set konfigurator_id in the select element
+            var konfiguratorSelect = document.getElementById("konfiguratorSelect");
+            konfiguratorSelect.value = page.konfigurator_id;
+
+            document.getElementById("pageHtml").value = page.stran; // Assuming your database returns HTML content
+        } else {
+            console.error('Page retrieval failed. Status: ' + xhr.status);
+        }
+    };
+    xhr.onerror = function() {
+        console.error('Page retrieval failed. Connection error.');
+    };
+    xhr.send(formData);
+}
+
+
+
+
+function SavePageEdit() {
+    var formData = new FormData();
+    var naslov = document.getElementById("stranNaslov").value;
+    var konfigurator_id = document.getElementById("konfiguratorSelect").value;
+    var pageHtml = document.getElementById("pageHtml").value;
+
+    // Append form data to FormData object
+    formData.append("naslov", naslov);
+    formData.append("konfigurator_id", konfigurator_id);
+    formData.append("pageHtml", pageHtml);
+    formData.append("id", document.getElementById("stranId").innerText);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'info/editstran.php', true); // Assuming this is the endpoint to save the page data
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Success
+            console.log('Page saved successfully.');
+            console.log(xhr.responseText);
+            location.reload();
+            //set cookie for successful save
+            // You can perform additional actions here if needed
+        } else {
+            console.error('Page save failed. Status: ' + xhr.status);
+            // Handle error cases here
+        }
+    };
+    xhr.onerror = function() {
+        console.error('Page save failed. Connection error.');
+        // Handle connection errors here
+    };
+    xhr.send(formData);
+}
+
+
+

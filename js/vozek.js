@@ -20,6 +20,7 @@ document.getElementById("narocilaButton").addEventListener("click", function() {
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
     var straniContainer = document.querySelector('#straniContainer');
+    var editStranContainer = document.querySelector('#edit-page-form');
     var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
@@ -39,6 +40,7 @@ document.getElementById("narocilaButton").addEventListener("click", function() {
     hideElement(straniContainer);
     hideElement(uporabnikiElement);
     hideElement(profilElement);
+    hideElement(editStranContainer);
     showElement(narocilaElement);
 
     // Scroll to the top of the page
@@ -55,6 +57,7 @@ document.getElementById("straniButton").addEventListener("click", function() {
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
     var straniContainer = document.querySelector('#straniContainer');
+    var editStranContainer = document.querySelector('#edit-page-form');
     var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
@@ -75,6 +78,7 @@ document.getElementById("straniButton").addEventListener("click", function() {
     hideElement(uporabnikiElement);
     hideElement(profilElement);
     showElement(straniContainer);
+    hideElement(editStranContainer);
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
@@ -115,6 +119,7 @@ document.getElementById("izdelkiButton").addEventListener("click", function() {
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
     var straniContainer = document.querySelector('#straniContainer');
     var createStranContainer = document.querySelector('#create-page-form');
+    var editStranContainer = document.querySelector('#edit-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
     var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
     }
@@ -134,6 +139,7 @@ document.getElementById("izdelkiButton").addEventListener("click", function() {
     hideElement(uporabnikiElement);
     hideElement(profilElement);
     showElement(izdelkiElement);
+    hideElement(editStranContainer);
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
@@ -153,6 +159,7 @@ document.getElementById("profilButton").addEventListener("click", function() {
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
     var straniContainer = document.querySelector('#straniContainer');
     var createStranContainer = document.querySelector('#create-page-form');
+    var editStranContainer = document.querySelector('#edit-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
         }
@@ -172,6 +179,7 @@ document.getElementById("profilButton").addEventListener("click", function() {
     hideElement(uporabnikiElement);
     hideElement(narocilaElement);
     showElement(profilElement);
+    hideElement(editStranContainer);
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
@@ -187,6 +195,7 @@ document.getElementById("uporabnikiButton").addEventListener("click", function()
     var deletePoljaContainer = document.querySelector('#deletePoljaContainer');
     var addPoljaContainer = document.querySelector('#addPoljaContainer');
     var straniContainer = document.querySelector('#straniContainer');
+    var editStranContainer = document.querySelector('#edit-page-form');
     var createStranContainer = document.querySelector('#create-page-form');
     if(document.querySelector('#editIzdelekContainer') !== null){
         var editIzdelekContainer = document.querySelector('#editIzdelekContainer');
@@ -207,6 +216,7 @@ document.getElementById("uporabnikiButton").addEventListener("click", function()
     hideElement(profilElement);
     hideElement(narocilaElement);
     showElement(uporabnikiElement);
+    hideElement(editStranContainer);
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
