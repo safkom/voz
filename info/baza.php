@@ -1,8 +1,8 @@
 <?php
-    $servername = "safko.eu";
-    $username = "safkoeu_voz";
-    $password = "m1h42005";
-    $database = "safkoeu_voz";
+    $servername = "localhost";
+    $username = "vozsi33_stran";
+    $password = "nekogesloksmsigamoguzmislit";
+    $database = "vozsi33_stran";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
