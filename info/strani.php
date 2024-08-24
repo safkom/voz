@@ -14,12 +14,14 @@
         echo "<table>";
         echo "<tr>";
         echo "<th>Ime strani</th>";
+        echo "<th>Link</th>";
         echo "<th>Uredi</th>";
         echo "<th>Izbriši</th>";
         echo "</tr>";
         while ($stran = $result_strani->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . $stran["naslov"] . "</td>";
+            echo "<td><a href='https://voz.si?stran=" . str_replace(' ', '', strtolower($stran["naslov"])) . "'>" . $stran["naslov"] . "</a></td>";
             echo "<td><button class='gray-button' onclick='editStran(" . $stran["id"] . ")'>Uredi</button></td>";
             echo "<td><button class='red-button' onclick='deleteStran(" . $stran["id"] . ")'>Izbriši</button></td>";
             echo "</tr>";
